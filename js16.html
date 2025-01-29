@@ -1,0 +1,50 @@
+<!-- สไลด์โชว์รูปภาพ (Image Slideshow) -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>js16.html</title>
+</head>
+
+<body>
+    <div id="js16">
+        <h3>สไลด์โชว์รูปภาพ</h3>
+        <div class="slideshow">
+            <div> <img id="slideImage" src="https://s359.kapook.com/pagebuilder/c4fe88d2-fb72-4a82-b6ad-262ce0d5629c.jpg" alt="slideshow" /> </div> <button
+                onclick="changeSlide(-1)">ก่อนหน้า</button> <button onclick="changeSlide(1)">ถัดไป</button>
+        </div>
+
+        <style>
+            .slideshow {
+                text-align: center;
+            }
+
+            .slideshow img {
+                max-width: 400px;
+                height: 300px;
+                margin: 10px;
+            }
+        </style>
+
+        <script>
+            // สร้าง Array เก็บ URL รูปภาพ 
+            const images = [
+                "https://s.isanook.com/ho/0/ud/53/269879/421518.jpg?ip/resize/w728/q80/jpg",
+                "https://s.isanook.com/wo/0/ud/49/247017/cat.jpg?ip/crop/w670h402/q80/jpg",
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQP09ELENeDpTTR3nPDuaH2crpr1PWQmJFuaQ&s",
+            ];
+            let currentSlide = 0;
+
+            // ฟังก์ชันเปลี่ยนสไลด์ 
+            function changeSlide(direction) {
+                // คํานวณ index ของสไลด์ถัดไป 
+                currentSlide = (currentSlide + direction + images.length) % images.length;
+                // อัพเดทรูปภาพ 
+                document.getElementById("slideImage").src = images[currentSlide];
+            } </script>
+    </div>
+</body>
+
+</html>
